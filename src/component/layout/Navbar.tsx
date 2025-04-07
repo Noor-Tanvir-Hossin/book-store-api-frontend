@@ -1,26 +1,30 @@
-import { NavLink } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Sheet, SheetTrigger, SheetContent } from "@/components/ui/sheet";
 import { Menu } from "lucide-react";
-import Logo from "@/assets/logo.png"; // Import your logo
+import Logo from "@/assets/images/B__1_-removebg-preview.png"; // Import your logo
 
 export default function Navbar() {
   return (
     <nav className="flex items-center justify-between px-6 py-4 shadow-md bg-white">
       {/* Logo */}
-      <div className="flex items-center space-x-2">
-        <img src={Logo} alt="Logo" className="w-8 h-8" />
-        <span className="text-xl font-bold">MyBrand</span>
+      <div className="flex relative ">
+        <div className="">
+          <img src={Logo} alt="Logo" className="w-20 h-20" />
+        </div>
+        <p className="text-4xl font-extrabold absolute left-20 top-2 ">
+          Book<span className="text-[#FD6E0A]">Bridge</span>
+        </p>
       </div>
 
       {/* Desktop Links */}
-      <div className="hidden md:flex space-x-6">
+      <div className="hidden md:flex space-x-2">
         <NavLink
           to="/"
           className={({ isActive }) =>
             `px-4 py-2 transition-all ${
-              isActive ? "text-blue-600 font-bold" : "text-gray-700"
-            } hover:text-blue-500`
+              isActive ? "text-[#FD6E0A]  text-xl font-bold" : "text-gray-700 text-xl"
+            } hover:text-[#FD6E0A]`
           }
         >
           Home
@@ -29,47 +33,40 @@ export default function Navbar() {
           to="/about"
           className={({ isActive }) =>
             `px-4 py-2 transition-all ${
-              isActive ? "text-blue-600 font-bold" : "text-gray-700"
-            } hover:text-blue-500`
+              isActive ? "text-[#FD6E0A]  text-xl font-bold" : "text-gray-700 text-xl"
+            } hover:text-[#FD6E0A]`
           }
         >
           About
         </NavLink>
         <NavLink
-          to="/services"
+          to="/products"
           className={({ isActive }) =>
             `px-4 py-2 transition-all ${
-              isActive ? "text-blue-600 font-bold" : "text-gray-700"
-            } hover:text-blue-500`
+              isActive ? "text-[#FD6E0A]  text-xl font-bold" : "text-gray-700 text-xl"
+            } hover:text-[#FD6E0A]`
           }
         >
-          Services
+          All Products
         </NavLink>
-        <NavLink
-          to="/contact"
-          className={({ isActive }) =>
-            `px-4 py-2 transition-all ${
-              isActive ? "text-blue-600 font-bold" : "text-gray-700"
-            } hover:text-blue-500`
-          }
-        >
-          Contact
-        </NavLink>
+        
       </div>
 
       {/* Login / Sign Up Buttons */}
       <div className="hidden md:flex space-x-4">
         <Button
-          variant="outline"
-          className="transition-transform transform hover:scale-105 hover:bg-gray-100"
+          variant="personal2"
+          className=" transition-transform transform hover:scale-105 "
         >
-          Login
+          <Link to='/login'>
+          Login</Link>
         </Button>
         <Button
-          variant="default"
-          className="transition-transform transform hover:scale-105 hover:bg-blue-600"
+          variant="personal1"
+          className="transition-transform transform hover:scale-105 "
         >
-          Sign Up
+          <Link to='/signup'>
+          Sign UP</Link>
         </Button>
       </div>
 
@@ -86,16 +83,27 @@ export default function Navbar() {
               <NavLink to="/" className="text-gray-700 hover:text-blue-500">
                 Home
               </NavLink>
-              <NavLink to="/about" className="text-gray-700 hover:text-blue-500">
+              <NavLink
+                to="/about"
+                className="text-gray-700 hover:text-blue-500"
+              >
                 About
               </NavLink>
-              <NavLink to="/services" className="text-gray-700 hover:text-blue-500">
+              <NavLink
+                to="/services"
+                className="text-gray-700 hover:text-blue-500"
+              >
                 Services
               </NavLink>
-              <NavLink to="/contact" className="text-gray-700 hover:text-blue-500">
+              <NavLink
+                to="/contact"
+                className="text-gray-700 hover:text-blue-500"
+              >
                 Contact
               </NavLink>
-              <Button variant="outline" className="mt-4">Login</Button>
+              <Button variant="outline" className="mt-4">
+                Login
+              </Button>
               <Button variant="default">Sign Up</Button>
             </div>
           </SheetContent>
