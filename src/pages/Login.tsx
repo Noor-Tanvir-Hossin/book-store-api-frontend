@@ -74,6 +74,8 @@ const Login = () => {
             Login!
           </h1>
 
+          <p>hellow</p>
+
           <div className="relative flex items-center mt-8">
             <span className="absolute">
               <svg
