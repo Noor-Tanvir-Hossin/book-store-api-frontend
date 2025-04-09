@@ -23,7 +23,9 @@ export default function Navbar() {
           to="/"
           className={({ isActive }) =>
             `px-4 py-2 transition-all ${
-              isActive ? "text-[#FD6E0A]  text-xl font-bold" : "text-gray-700 text-xl"
+              isActive
+                ? "text-[#FD6E0A]  text-xl font-bold"
+                : "text-gray-700 text-xl"
             } hover:text-[#FD6E0A]`
           }
         >
@@ -33,7 +35,9 @@ export default function Navbar() {
           to="/about"
           className={({ isActive }) =>
             `px-4 py-2 transition-all ${
-              isActive ? "text-[#FD6E0A]  text-xl font-bold" : "text-gray-700 text-xl"
+              isActive
+                ? "text-[#FD6E0A]  text-xl font-bold"
+                : "text-gray-700 text-xl"
             } hover:text-[#FD6E0A]`
           }
         >
@@ -43,13 +47,14 @@ export default function Navbar() {
           to="/products"
           className={({ isActive }) =>
             `px-4 py-2 transition-all ${
-              isActive ? "text-[#FD6E0A]  text-xl font-bold" : "text-gray-700 text-xl"
+              isActive
+                ? "text-[#FD6E0A]  text-xl font-bold"
+                : "text-gray-700 text-xl"
             } hover:text-[#FD6E0A]`
           }
         >
           All Products
         </NavLink>
-        
       </div>
 
       {/* Login / Sign Up Buttons */}
@@ -58,15 +63,13 @@ export default function Navbar() {
           variant="personal2"
           className=" transition-transform transform hover:scale-105 "
         >
-          <Link to='/login'>
-          Login</Link>
+          <Link to="/login">Login</Link>
         </Button>
         <Button
           variant="personal1"
           className="transition-transform transform hover:scale-105 "
         >
-          <Link to='/signup'>
-          Sign UP</Link>
+          <Link to="/signup">Sign UP</Link>
         </Button>
       </div>
 
@@ -90,10 +93,16 @@ export default function Navbar() {
                 About
               </NavLink>
               <NavLink
-                to="/services"
-                className="text-gray-700 hover:text-blue-500"
+                to="/products"
+                className={({ isActive }) =>
+                  `${
+                    isActive
+                      ? "text-[#FD6E0A] font-bold"
+                      : "text-gray-700 hover:text-blue-500"
+                  } hover:text-[#FD6E0A]`
+                }
               >
-                Services
+                All Products
               </NavLink>
               <NavLink
                 to="/contact"
