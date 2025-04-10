@@ -1,12 +1,13 @@
-import Hero from "@/component/ui/Hero"
+import Hero from "@/component/ui/Hero";
+import Review from "@/component/ui/Review";
 
 const Home = () => {
   return (
     <div>
-       <Hero/>
+      <Hero />
+      <Review />
     </div>
-    
-  )
-}
+  );
+};
 
-export default Home
+export default Home;

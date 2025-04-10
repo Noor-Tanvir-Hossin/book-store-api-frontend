@@ -1,0 +1,72 @@
+[
+  {
+    "id": 1,
+    "user": "Alice",
+    "book": "The Great Gatsby",
+    "comment": "A timeless classic with deep characters and beautiful prose.",
+    "rating": 5
+  },
+  {
+    "id": 2,
+    "user": "Bob",
+    "book": "1984",
+    "comment": "A chilling depiction of a dystopian future. Thought-provoking.",
+    "rating": 4
+  },
+  {
+    "id": 3,
+    "user": "Charlie",
+    "book": "To Kill a Mockingbird",
+    "comment": "Powerful themes of justice and morality. A must-read.",
+    "rating": 5
+  },
+  {
+    "id": 4,
+    "user": "Diana",
+    "book": "The Catcher in the Rye",
+    "comment": "Relatable yet frustrating protagonist. A unique read.",
+    "rating": 3
+  },
+  {
+    "id": 5,
+    "user": "Ethan",
+    "book": "Pride and Prejudice",
+    "comment": "Charming and witty. A delightful romantic classic.",
+    "rating": 4
+  },
+  {
+    "id": 6,
+    "user": "Fiona",
+    "book": "The Alchemist",
+    "comment": "Inspiring and philosophical. A journey of self-discovery.",
+    "rating": 5
+  },
+  {
+    "id": 7,
+    "user": "George",
+    "book": "Moby-Dick",
+    "comment": "Dense but rewarding. A deep dive into obsession and fate.",
+    "rating": 4
+  },
+  {
+    "id": 8,
+    "user": "Hannah",
+    "book": "Jane Eyre",
+    "comment": "A strong female lead and a gripping narrative.",
+    "rating": 5
+  },
+  {
+    "id": 9,
+    "user": "Ian",
+    "book": "The Hobbit",
+    "comment": "Magical adventure with rich world-building.",
+    "rating": 5
+  },
+  {
+    "id": 10,
+    "user": "Julia",
+    "book": "Brave New World",
+    "comment": "Challenging concepts and a futuristic vision. Very relevant.",
+    "rating": 4
+  }
+]
