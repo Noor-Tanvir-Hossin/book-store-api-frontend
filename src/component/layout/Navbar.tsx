@@ -70,6 +70,21 @@ export default function Navbar() {
         >
           All Products
         </NavLink>
+        {
+          user && <NavLink
+          to={user.role === "admin" ? "/dashboard/user-management" : "/dashboard/order-history"}
+          // to="/dashboard/user-management"
+          className={({ isActive }) =>
+            `px-4 py-2 transition-all ${
+              isActive
+                ? "text-[#FD6E0A]  text-xl font-bold"
+                : "text-gray-700 text-xl"
+            } hover:text-[#FD6E0A]`
+          }
+        >
+          Dashboard
+        </NavLink>
+        }
       </div>
 
       {/* Login / Sign Up Buttons */}
