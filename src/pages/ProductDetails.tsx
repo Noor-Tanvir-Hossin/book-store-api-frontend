@@ -2,6 +2,7 @@ import { Button } from "@/components/ui/button";
 import { useGetProductQuery } from "@/redux/features/Products/ProductsApi";
 import { MoveRight } from "lucide-react";
 import { useNavigate, useParams } from "react-router-dom";
+import LoddingPage from "./LoddingPage";
 
 const ProductDetails = () => {
   const { id } = useParams();
@@ -9,7 +10,7 @@ const ProductDetails = () => {
   const navigate = useNavigate();
 
   if (isLoading) {
-    return <p className="text-center">Loading...</p>;
+    return <LoddingPage />;
   }
   const product = data?.data || {};
 

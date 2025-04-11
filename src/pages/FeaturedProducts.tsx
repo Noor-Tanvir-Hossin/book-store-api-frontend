@@ -19,12 +19,13 @@ import {
 import { useGetProductsQuery } from "@/redux/features/Products/ProductsApi";
 import { TProduct } from "@/types/product.type";
 import { useNavigate } from "react-router-dom";
+import LoddingPage from "./LoddingPage";
 
 const FeaturedProducts = () => {
   const { data, isLoading, error } = useGetProductsQuery(undefined);
   const navigate = useNavigate();
   if (isLoading) {
-    return <div>Loading...</div>;
+    return <LoddingPage />;
   }
 
   if (error || !data.data || data.data.length === 0) {
