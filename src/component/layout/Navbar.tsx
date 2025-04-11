@@ -122,10 +122,16 @@ export default function Navbar() {
                 About
               </NavLink>
               <NavLink
-                to="/services"
-                className="text-gray-700 hover:text-blue-500"
+                to="/products"
+                className={({ isActive }) =>
+                  `${
+                    isActive
+                      ? "text-[#FD6E0A] font-bold"
+                      : "text-gray-700 hover:text-blue-500"
+                  } hover:text-[#FD6E0A]`
+                }
               >
-                Services
+                All Products
               </NavLink>
               <NavLink
                 to="/contact"
