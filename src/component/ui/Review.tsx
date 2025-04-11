@@ -42,6 +42,11 @@ const Review: React.FC = () => {
         <h1 className="text-4xl text-center font-extrabold text-gray-800 mb-6">
           Book <span className="text-[#FD6E0A]">Reviews</span>
         </h1>
+        <p className=" text-center my-4 font-medium text-gray-700">
+          Discover honest and insightful reviews of your favorite books ,from
+          timeless classics to the latest bestsellers. Find your next great read
+          through our readers' perspectives.
+        </p>
         <Marquee pauseOnHover={true}>
           {reviews.map((review) => (
             <Card
