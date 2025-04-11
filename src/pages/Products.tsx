@@ -21,6 +21,7 @@ import { useEffect, useMemo, useState } from "react";
 import { Input } from "@/components/ui/input";
 import { Slider } from "@/components/ui/slider";
 import { useNavigate } from "react-router-dom";
+import LoddingPage from "./LoddingPage";
 
 // import { Calendar, Home, Inbox, Search, Settings } from "lucide-react";
 
@@ -71,7 +72,7 @@ const Products = () => {
   });
 
   if (isLoading) {
-    return <p className="text-center">Loading...</p>;
+    return <LoddingPage />; //<p className="text-center">Loading...</p>
   }
 
   return (
