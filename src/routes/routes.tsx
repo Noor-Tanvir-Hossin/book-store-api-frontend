@@ -1,5 +1,6 @@
 import App from "@/App";
 import About from "@/pages/About";
+import Checkout from "@/pages/Checkout";
 import Home from "@/pages/Home";
 import Login from "@/pages/Login";
 import ProductDetails from "@/pages/ProductDetails";
@@ -25,8 +26,12 @@ const router = createBrowserRouter([
         element: <Products />,
       },
       {
-        path: "/productDetails",
+        path: "/products/:id",
         element: <ProductDetails />,
+      },
+      {
+        path: "/checkout",
+        element: <Checkout />,
       },
       {
         path: "/login",

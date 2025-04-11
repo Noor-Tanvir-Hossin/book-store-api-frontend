@@ -12,6 +12,7 @@ import {
   Card,
   CardContent,
   CardDescription,
+  CardFooter,
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
@@ -19,6 +20,7 @@ import { Button } from "@/components/ui/button";
 import { useEffect, useMemo, useState } from "react";
 import { Input } from "@/components/ui/input";
 import { Slider } from "@/components/ui/slider";
+import { useNavigate } from "react-router-dom";
 
 // import { Calendar, Home, Inbox, Search, Settings } from "lucide-react";
 
@@ -34,15 +36,7 @@ const Products = () => {
     "All Authors",
     ...new Set(products.map((product: TProduct) => product.author)),
   ];
-  // const categories = [
-  //   "All Categories",
-  //   ...new Set(products.map((product: TProduct) => product.category)),
-  // ];
-  // const authors = [
-  //   "All Authors",
-  //   ...new Set(products.map((product: TProduct) => product.author)),
-  // ];
-  // const navigate = useNavigate();
+  const navigate = useNavigate();
   const [search, setSearch] = useState("");
   const [filterCategory, setFilterCategory] = useState("All Categories");
   const [filterAuthor, setFilterAuthor] = useState("All Authors");
@@ -58,24 +52,7 @@ const Products = () => {
       setPriceRange([Math.min(...prices), Math.max(...prices)]);
     }
   }, [products]);
-  // const filteredProducts = products.filter((product: TProduct) => {
-  //   return (
-  //     (search === "" ||
-  //       product.title.toLowerCase().includes(search.toLowerCase()) ||
-  //       product.author.toLowerCase().includes(search.toLowerCase()) ||
-  //       product.category.toLowerCase().includes(search.toLowerCase())) &&
-  //     (filterCategory === "All Categories" ||
-  //       product.category === filterCategory) &&
-  //     (filterAuthor === "All Authors" || product.author === filterAuthor) &&
-  //     product.price >= priceRange[0] &&
-  //     product.price <= priceRange[1] &&
-  //     (availability === "all" ||
-  //       (availability === "available" && product.inStock) ||
-  //       (availability === "unavailable" && !product.inStock))
-  //   );
-  // });
 
-  console.log(filterCategory);
   const filteredProducts = products.filter((product: TProduct) => {
     return (
       (search === "" ||
@@ -93,14 +70,8 @@ const Products = () => {
     );
   });
 
-  // search === "" ||
-  //   product.title.toLowerCase().includes(search.toLowerCase()) ||
-  //   product.author.toLowerCase().includes(search.toLowerCase()) ||
-  //   (product.category.toLowerCase().includes(search.toLowerCase()) &&
-  //     (filterCategory === "All Categories" ||
-  //       product.category === filterCategory));
   if (isLoading) {
-    return <p>Loading...</p>;
+    return <p className="text-center">Loading...</p>;
   }
 
   return (
@@ -169,7 +140,23 @@ const Products = () => {
           <p className="mx-auto my-6 md:text-lg">
             We're sorry. We cannot find any matches for your query term.
           </p>
-          <svg xmlns="http://www.w3.org/2000/svg" width="300" height="300" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" className="lucide lucide-search-x-icon lucide-search-x mx-auto"><path d="m13.5 8.5-5 5"/><path d="m8.5 8.5 5 5"/><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="300"
+            height="300"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            className="lucide lucide-search-x-icon lucide-search-x mx-auto"
+          >
+            <path d="m13.5 8.5-5 5" />
+            <path d="m8.5 8.5 5 5" />
+            <circle cx="11" cy="11" r="8" />
+            <path d="m21 21-4.3-4.3" />
+          </svg>
         </div>
       )}
       <div className="md:ml-0 gap-6 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 justify-evenly items-center w-full">
@@ -185,14 +172,15 @@ const Products = () => {
               <p>{product.category}</p>
               <p>{product.price}TK.</p>
             </CardContent>
-            <div className="flex">
+            <CardFooter className="flex">
               <Button
                 className="mx-auto bg-[#FD6E0A] hover:bg-[#dc803fed]"
                 variant="default"
+                onClick={() => navigate(`/products/${product._id}`)}
               >
                 View Details
               </Button>
-            </div>
+            </CardFooter>
           </Card>
         ))}
       </div>
