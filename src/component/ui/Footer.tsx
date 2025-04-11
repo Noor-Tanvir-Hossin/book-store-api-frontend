@@ -20,11 +20,11 @@ const Footer = () => {
               </svg>
               <img src={Logo} alt="Logo" className="w-14 h-14" />
             </div> */}
-            <div className="flex relative ">
+            <div className="flex relative">
               <div className="">
                 <img src={Logo} alt="Logo" className="w-20 h-20" />
               </div>
-              <p className="text-4xl font-extrabold absolute left-20 top-2 ">
+              <p className="text-4xl font-extrabold md:absolute left-20 top-2 ">
                 Book<span className="text-[#FD6E0A]">Bridge</span>
               </p>
             </div>
