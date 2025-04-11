@@ -65,6 +65,7 @@ const FeaturedProducts = () => {
               <Button
                 className="mx-auto bg-[#FD6E0A] hover:bg-[#dc803fed]"
                 variant="default"
+                onClick={() => navigate(`/products/${product._id}`)}
               >
                 View Details
               </Button>
