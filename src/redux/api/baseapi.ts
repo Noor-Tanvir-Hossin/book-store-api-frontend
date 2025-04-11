@@ -1,23 +1,29 @@
-import { BaseQueryApi, BaseQueryFn, DefinitionType, FetchArgs, createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
+import {
+  BaseQueryApi,
+  BaseQueryFn,
+  DefinitionType,
+  FetchArgs,
+  createApi,
+  fetchBaseQuery,
+} from "@reduxjs/toolkit/query/react";
 import { RootState } from "../features/store";
 import { logout, setUser } from "../features/auth/authSlice";
 
-
 const baseQuery = fetchBaseQuery({
-    baseUrl: 'http://localhost:5000/api',
-    credentials: 'include',
-    prepareHeaders: (headers, { getState }) => {
-      const token = (getState() as RootState).auth.token;
-  
-      if (token) {
-        headers.set('authorization', `${token}`);
-      }
-  
-      return headers;
-    },
-  });
+  baseUrl: "http://localhost:5000/api",
+  credentials: "include",
+  prepareHeaders: (headers, { getState }) => {
+    const token = (getState() as RootState).auth.token;
 
-  const baseQueryWithRefreshToken: BaseQueryFn<
+    if (token) {
+      headers.set("authorization", `${token}`);
+    }
+
+    return headers;
+  },
+});
+
+const baseQueryWithRefreshToken: BaseQueryFn<
   FetchArgs,
   BaseQueryApi,
   DefinitionType
@@ -26,11 +32,11 @@ const baseQuery = fetchBaseQuery({
 
   if (result?.error?.status === 401) {
     //* Send Refresh
-    console.log('Sending refresh token');
+    console.log("Sending refresh token");
 
-    const res = await fetch('http://localhost:5000/api/auth/refresh-token', {
-      method: 'POST',
-      credentials: 'include',
+    const res = await fetch("http://localhost:5000/api/auth/refresh-token", {
+      method: "POST",
+      credentials: "include",
     });
 
     const data = await res.json();
@@ -40,7 +46,7 @@ const baseQuery = fetchBaseQuery({
 
       api.dispatch(
         setUser({
-          user : user,
+          user: user,
           token: data.data.token,
         })
       );
@@ -54,9 +60,9 @@ const baseQuery = fetchBaseQuery({
   return result;
 };
 
-
 export const baseApi = createApi({
-    reducerPath : 'baseApi',
-    baseQuery : baseQueryWithRefreshToken ,  
-    endpoints : () =>({})
-})
+  reducerPath: "baseApi",
+  baseQuery: baseQueryWithRefreshToken,
+  endpoints: () => ({}),
+});
+
