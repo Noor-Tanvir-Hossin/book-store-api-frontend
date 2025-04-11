@@ -1,5 +1,8 @@
-import { SubmitHandler, useForm } from "react-hook-form";
-import { Link } from "react-router-dom";
+import { useSignupMutation } from "@/redux/features/auth/authApi";
+import { TMessage } from "@/types";
+import { FieldValues, SubmitHandler, useForm } from "react-hook-form";
+import { Link, useNavigate } from "react-router-dom";
+import { toast } from "sonner";
 
 type Inputs = {
   name: string;
@@ -8,14 +11,33 @@ type Inputs = {
 };
 
 const SignUp = () => {
+
+  const [signup] = useSignupMutation();
+  const navigate = useNavigate()
+
   const {
     register,
     handleSubmit,
     
     formState: { errors },
   } = useForm<Inputs>();
-  const onSubmit: SubmitHandler<Inputs> = (data) => {
-    console.log(data);
+  const onSubmit: SubmitHandler<FieldValues> = async(data) => {
+    const toastId = toast.loading("Signing up...");
+    try {
+      const userInfo = {
+        name:data.name,
+        email: data.email,
+        password: data.password,
+      };
+      console.log(data);
+
+      await signup(userInfo).unwrap();
+      toast.success("You're in! Signup successful.", { id: toastId, duration: 2000 });
+      navigate('/login')
+    } catch (error) {
+      toast.error((error as TMessage).data.message);
+    };
+    
   };
 
   return (

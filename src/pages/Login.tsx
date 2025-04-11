@@ -22,7 +22,7 @@ const Login = () => {
   } = useForm<Inputs>({
     defaultValues: {
       email: "tanvir@example12.com",
-      password: "12345678",
+      password: "258258258",
     },
   });
   const [login] = useLoginMutation();
@@ -74,7 +74,7 @@ const Login = () => {
             Login!
           </h1>
 
-          <p>hellow</p>
+         
 
           <div className="relative flex items-center mt-8">
             <span className="absolute">

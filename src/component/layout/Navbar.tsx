@@ -1,10 +1,25 @@
-import { Link, NavLink } from "react-router-dom";
+import { Link, NavLink, useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Sheet, SheetTrigger, SheetContent } from "@/components/ui/sheet";
 import { Menu } from "lucide-react";
 import Logo from "@/assets/images/B__1_-removebg-preview.png"; // Import your logo
+import { useSelector } from "react-redux";
+import { useAppDispatch } from "@/redux/features/hooks";
+import { logout, useCurrentUser } from "@/redux/features/auth/authSlice";
+import { toast } from "sonner";
 
 export default function Navbar() {
+  const user = useSelector(useCurrentUser);
+  console.log(user);
+  const dispatch = useAppDispatch();
+  const navigate = useNavigate();
+  const handleLogout = () => {
+    dispatch(logout());
+    toast.success("Logged out successfully");
+
+    navigate("/login");
+  };
+
   return (
     <nav className="flex items-center justify-between px-6 py-4 shadow-md bg-white">
       {/* Logo */}
@@ -58,19 +73,33 @@ export default function Navbar() {
       </div>
 
       {/* Login / Sign Up Buttons */}
-      <div className="hidden md:flex space-x-4">
-        <Button
-          variant="personal2"
-          className=" transition-transform transform hover:scale-105 "
-        >
-          <Link to="/login">Login</Link>
-        </Button>
-        <Button
-          variant="personal1"
-          className="transition-transform transform hover:scale-105 "
-        >
-          <Link to="/signup">Sign UP</Link>
-        </Button>
+      <div className="hidden md:flex">
+        {user ? (
+          // 👉 User is logged in → show LogOut only
+          <Button
+            onClick={handleLogout}
+            variant="personal1"
+            className="transition-transform transform hover:scale-105"
+          >
+            Log Out
+          </Button>
+        ) : (
+          // 👉 No user → show Login + Sign Up
+          <div className="space-x-4">
+            <Button
+              variant="personal2"
+              className="transition-transform transform hover:scale-105"
+            >
+              <Link to="/login">Login</Link>
+            </Button>
+            <Button
+              variant="personal1"
+              className="transition-transform transform hover:scale-105"
+            >
+              <Link to="/signup">Sign UP</Link>
+            </Button>
+          </div>
+        )}
       </div>
 
       {/* Mobile Menu */}
@@ -111,9 +140,11 @@ export default function Navbar() {
                 Contact
               </NavLink>
               <Button variant="outline" className="mt-4">
-                Login
+                <Link to="/login">Login</Link>
               </Button>
-              <Button variant="default">Sign Up</Button>
+              <Button variant="default">
+                <Link to="/signup">Sign UP</Link>
+              </Button>
             </div>
           </SheetContent>
         </Sheet>
