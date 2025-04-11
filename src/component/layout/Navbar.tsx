@@ -8,11 +8,11 @@ export default function Navbar() {
   return (
     <nav className="flex items-center justify-between px-6 py-4 shadow-md bg-white">
       {/* Logo */}
-      <div className="flex relative ">
+      <div className="flex items-center relative ">
         <div className="">
           <img src={Logo} alt="Logo" className="w-20 h-20" />
         </div>
-        <p className="text-4xl font-extrabold absolute left-20 top-2 ">
+        <p className="text-xl md:text-2xl lg:text-4xl font-extrabold md:absolute left-20 top-2 ">
           Book<span className="text-[#FD6E0A]">Bridge</span>
         </p>
       </div>
