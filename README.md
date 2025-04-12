@@ -132,23 +132,34 @@ npm install
 npm run dev
 ```
 
-### Contributing
+## Contributing
 
-# 1. Fork the repo
+1. Fork the repo
 
-# 2. Clone your fork
+2. Clone your fork
 
-````git clone https://github.com/your-username/your-repo.git
-cd your-repo ```
+```
+git clone https://github.com/your-username/your-repo.git
+cd your-repo
+```
 
-# 3. Create a new branch
-``` git checkout -b feature/YourFeature ```
+3. Create a new branch
 
-# 4. Make changes & commit
-```git add .
-git commit -m "Add: Your feature summary" ```
+```
+git checkout -b feature/YourFeature
+```
 
-# 5. Push & create Pull Request
-```git push origin feature/YourFeature```
-# 6. open a pull requst
-````
+4. Make changes & commit
+
+```
+git add .
+git commit -m "Add: Your feature summary"
+```
+
+5. Push & create Pull Request
+
+```
+git push origin feature/YourFeature
+```
+
+6. open a pull requst
