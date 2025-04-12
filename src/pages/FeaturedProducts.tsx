@@ -16,10 +16,11 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
-import { useGetProductsQuery } from "@/redux/features/Products/ProductsApi";
+
 import { TProduct } from "@/types/product.type";
 import { useNavigate } from "react-router-dom";
 import LoddingPage from "./LoddingPage";
+import { useGetProductsQuery } from "@/redux/features/ProductsApi/ProductsApi";
 
 const FeaturedProducts = () => {
   const { data, isLoading, error } = useGetProductsQuery(undefined);

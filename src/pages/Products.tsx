@@ -1,4 +1,3 @@
-import { useGetProductsQuery } from "@/redux/features/Products/ProductsApi";
 import { TProduct } from "@/types/product.type";
 // import { useNavigate } from "react-router-dom";
 
@@ -22,6 +21,7 @@ import { Input } from "@/components/ui/input";
 import { Slider } from "@/components/ui/slider";
 import { useNavigate } from "react-router-dom";
 import LoddingPage from "./LoddingPage";
+import { useGetProductsQuery } from "@/redux/features/ProductsApi/ProductsApi";
 
 // import { Calendar, Home, Inbox, Search, Settings } from "lucide-react";
 

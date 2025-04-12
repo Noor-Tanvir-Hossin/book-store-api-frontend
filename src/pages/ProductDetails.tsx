@@ -1,8 +1,8 @@
 import { Button } from "@/components/ui/button";
-import { useGetProductQuery } from "@/redux/features/Products/ProductsApi";
 import { MoveRight } from "lucide-react";
 import { useNavigate, useParams } from "react-router-dom";
 import LoddingPage from "./LoddingPage";
+import { useGetProductQuery } from "@/redux/features/ProductsApi/ProductsApi";
 
 const ProductDetails = () => {
   const { id } = useParams();
