@@ -1,50 +1,154 @@
-# React + TypeScript + Vite
+# E-Commerce Book Store
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A fully functional and secure e-commerce platform featuring **User Authentication**, **Role-Based Dashboard**, **Product Management**, and **Secure Payment Integration**. Built with modern technologies ensuring responsive design and smooth user experience.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Features
 
-## Expanding the ESLint configuration
+### User Registration & Authentication (Role-Based)
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+- Secure **User Registration** with `name`, `email`, and `password`.
+- Default role assigned as `user`. (Admins are updated manually via DB)
+- Passwords are securely **hashed** before saving to the database.
+- **Login** using `email` and `password`.
+- **JWT (JSON Web Token)** is used for authentication.
+  - Token is stored in `localStorage`.
+- **Logout** functionality to clear the token and redirect to login page.
 
-- Configure the top-level `parserOptions` property like this:
+---
 
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
+### Public Routes
+
+#### Home Page
+
+- **Navbar**: Logo, navigation links, login/signup buttons.
+- **Banner**: Highlights platform features or promotions (carousel optional).
+- **Featured Products**: Shows up to 6 products + “View All” button.
+- **Extra Section**: Testimonials / Blogs / Promotions.
+- **Footer**: Social links, contact info, and useful site links.
+
+#### All Products Page
+
+- **Search** by title, author, or category.
+- **Filters**: Price range, author, category, availability.
+- **Dynamic Results**: Updates based on search/filter.
+- **Product Cards**: Product name, author, price, and category.
+- **"View Details" Button** for each product.
+
+#### Product Details Page
+
+- Product image, full description, and specs.
+- “Buy Now” button leading to Checkout Page.
+
+#### ℹ️ About Page
+
+- Info about the shop and its mission.
+- Add brand story, values, and more.
+
+---
+
+### Private Routes (Authentication Required)
+
+#### Checkout Page
+
+- View product summary and calculate total price.
+- Quantity checks (cannot exceed available stock).
+- **Order Form**: product details, user info, total, and payment method.
+- **SurjoPay Payment Gateway Integration**
+- “Order Now” button to place confirmed order.
+
+---
+
+### Dashboard (Role-Based)
+
+#### User Dashboard
+
+- View past orders.
+- Manage personal profile.
+- Change password (requires current password).
+
+#### Admin Dashboard
+
+- Manage Users: View, deactivate accounts.
+- Manage Products: Full **CRUD** operations.
+- Manage Orders: View, update, delete orders.
+
+---
+
+## Additional Features
+
+### Responsive Design
+
+- Works on all screen sizes.
+- Clean layout, consistent fonts, and good alignment.
+
+### Error Handling
+
+- Friendly error messages:
+  - Invalid login.
+  - Duplicate registration email.
+  - Out-of-stock product during checkout.
+
+### Loading States
+
+- Spinners during:
+  - Login
+  - API fetches
+  - Payment processing
+
+### Toast Notifications
+
+- Shows success/failure messages like:
+  - “Login successful”
+  - “Order placed successfully”
+  - “Product added”
+  - “Payment failed”
+
+---
+
+## Technologies Used
+
+- **Frontend**: React.js, Tailwind CSS, React Router
+- **Backend**: Node.js, Express.js, MongoDB, JWT, Mongoose
+- **Payment**: SurjoPay
+
+---
+
+## Installation & Running Locally
+
+# Frontend Setup
+
+```
+ git clone https://github.com/Noor-Tanvir-Hossin/book-store-api-frontend.git
+
 ```
 
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
-
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react'
-
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-})
 ```
+npm install
+```
+
+```
+npm run dev
+```
+
+### Contributing
+
+# 1. Fork the repo
+
+# 2. Clone your fork
+
+````git clone https://github.com/your-username/your-repo.git
+cd your-repo ```
+
+# 3. Create a new branch
+``` git checkout -b feature/YourFeature ```
+
+# 4. Make changes & commit
+```git add .
+git commit -m "Add: Your feature summary" ```
+
+# 5. Push & create Pull Request
+```git push origin feature/YourFeature```
+# 6. open a pull requst
+````

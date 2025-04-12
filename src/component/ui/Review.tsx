@@ -37,7 +37,7 @@ const Review: React.FC = () => {
   }
 
   return (
-    <div>
+    <div className="my-3">
       <div className="p-6  mx-auto">
         <h1 className="text-4xl text-center font-extrabold text-gray-800 mb-6">
           Book <span className="text-[#FD6E0A]">Reviews</span>
