@@ -22,7 +22,7 @@ const Login = () => {
   } = useForm<Inputs>({
     defaultValues: {
       email: "tanvir@example12.com",
-      password: "12345678",
+      password: "258258258",
     },
   });
   const [login] = useLoginMutation();
@@ -36,16 +36,18 @@ const Login = () => {
         password: data.password,
       };
 
-      console.log(userInfo);
+      // console.log(userInfo);
 
       const res = await login(userInfo).unwrap();
         console.log(res);
       const token = res.token; 
       console.log("Token before decoding:", token);
       const user = verifyToken(res?.token) as TUser;
-      console.log(user);
+      // console.log(user);
+      console.log(res.token);
+      
 
-      dispatch(setUser({ user: user, token: res.data.accessToken }));
+      dispatch(setUser({ user: user, token: res.token }));
       toast.success("Logged in", { id: toastId, duration: 2000 });
       //   navigate(
       //     user.role === "superAdmin"
@@ -73,6 +75,8 @@ const Login = () => {
           <h1 className="mt-3 text-2xl font-semibold text-gray-800 capitalize sm:text-3xl dark:text-white">
             Login!
           </h1>
+
+         
 
           <div className="relative flex items-center mt-8">
             <span className="absolute">

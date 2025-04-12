@@ -1,7 +1,7 @@
 import Logo from "@/assets/images/B__1_-removebg-preview.png";
 const Footer = () => {
   return (
-    <footer className="px-4 divide-y dark:bg-gray-100 dark:text-gray-800">
+    <footer className="px-4 divide-y dark:bg-gray-100 dark:text-gray-800 my-3">
       <div className="container flex flex-col justify-between py-10 mx-auto space-y-8 lg:flex-row lg:space-y-0">
         <div className="lg:w-1/3">
           <a
@@ -20,11 +20,11 @@ const Footer = () => {
               </svg>
               <img src={Logo} alt="Logo" className="w-14 h-14" />
             </div> */}
-            <div className="flex relative ">
+            <div className="flex relative">
               <div className="">
                 <img src={Logo} alt="Logo" className="w-20 h-20" />
               </div>
-              <p className="text-4xl font-extrabold absolute left-20 top-2 ">
+              <p className="text-4xl font-extrabold md:absolute left-20 top-2 ">
                 Book<span className="text-[#FD6E0A]">Bridge</span>
               </p>
             </div>
