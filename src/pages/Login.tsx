@@ -36,16 +36,18 @@ const Login = () => {
         password: data.password,
       };
 
-      console.log(userInfo);
+      // console.log(userInfo);
 
       const res = await login(userInfo).unwrap();
         console.log(res);
       const token = res.token; 
       console.log("Token before decoding:", token);
       const user = verifyToken(res?.token) as TUser;
-      console.log(user);
+      // console.log(user);
+      console.log(res.token);
+      
 
-      dispatch(setUser({ user: user, token: res.data.accessToken }));
+      dispatch(setUser({ user: user, token: res.token }));
       toast.success("Logged in", { id: toastId, duration: 2000 });
       //   navigate(
       //     user.role === "superAdmin"
