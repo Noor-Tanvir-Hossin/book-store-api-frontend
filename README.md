@@ -163,3 +163,49 @@ git push origin feature/YourFeature
 ```
 
 6. open a pull requst
+
+# Backend Setup
+
+1. git clone
+
+```
+git clone https://github.com/Noor-Tanvir-Hossin/book-store-pro_backend.git
+```
+
+2. npm install
+
+```
+npm i
+```
+
+3. create **_.env_** file
+
+```
+NODE_ENV=development
+PORT=5000
+DATABASE_URL= your_mongodb_database_url
+BCRYPT_SALT_ROUNDS=
+
+JWT_ACCESS_TOKEN=
+JWT_REFRESH_TOKEN=
+JWT_ACCESS_EXPIRES_IN=1d
+JWT_REFRESH_EXPIRES_IN=365d
+SP_ENDPOINT=sandbox_url
+SP_USERNAME=sandbox_user_name
+SP_PASSWORD=sandbox_password
+SP_PREFIX=SP
+SP_RETURN_URL=
+# DB_FILE=
+```
+
+4. run project
+
+```
+npm run start:dev
+```
+
+# Contact
+
+For any questions or feedback, please reach out to:
+
+Email: tanvirrobin11567@gmail.com
