@@ -27,7 +27,7 @@ const About = () => {
             Empowering Shopping with Excellence
           </h2>
           <p className="text-gray-600 leading-7 mb-6">
-            At our ShopVerse Project, we aim to revolutionize online shopping by
+            At our BookBridge Project, we aim to revolutionize online shopping by
             delivering an unparalleled customer experience. Whether you're
             searching for the latest gadgets, trendy fashion, or everyday
             essentials, we have you covered with a diverse collection of

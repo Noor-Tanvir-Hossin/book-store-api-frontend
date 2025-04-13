@@ -29,11 +29,11 @@ import { useDeleteOrderMutation, useGetOrdersQuery, useUpdateOrderStatusMutation
 import { TMessage, TOrder } from "@/types";
 import TableLoading from "../TableLoading";
 
-type TProduct = {
-  _id: string;
-  products: { title: string };
-  quantity: number;
-};
+// type TProduct = {
+//   _id: string;
+//   products: { title: string };
+//   quantity: number;
+// };
 
 const OrderManagement = () => {
   const user = useSelector(useCurrentUser);

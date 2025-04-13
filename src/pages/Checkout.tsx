@@ -35,7 +35,7 @@ import {
   removeItem,
 } from "@/redux/features/cart/cartSlice";
 import { useCurrentUser } from "@/redux/features/auth/authSlice";
-import { useSingleUsersQuery } from "@/redux/features/User/UserApi";
+import { useSingleUserByEmailQuery } from "@/redux/features/User/UserApi";
 import { useCreateOrderMutation } from "@/redux/features/order/OrderApi";
 import BSInput from "@/component/form/FormInput";
 import { ScrollArea } from "@/components/ui/scroll-area";
@@ -44,7 +44,7 @@ import LoddingPage from "./LoddingPage";
 const CheckoutPage: React.FC = () => {
   const dispatch = useDispatch();
   const user = useSelector(useCurrentUser);
-  const { data: userData, isLoading: UserLoading } = useSingleUsersQuery(
+  const { data: userData, isLoading: UserLoading } = useSingleUserByEmailQuery(
     user?.email,
     {
       skip: !user?.email,
