@@ -8,9 +8,15 @@ const authApi = baseApi.injectEndpoints({
         method: "GET",
       }),
     }),
-    singleUsers: builder.query({
+    singleUser: builder.query({
       query: ({ userId }) => ({
         url: `/users/${userId}`,
+        method: "GET",
+      }),
+    }),
+    singleUserByEmail: builder.query({
+      query: ( email ) => ({
+        url: `/users/email/${email}`,
         method: "GET",
       }),
     }),
@@ -36,6 +42,7 @@ export const {
   useUsersQuery,
   useUpdateUserRoleMutation,
   useUpdateUserStatusMutation,
-  useSingleUsersQuery,
+  useSingleUserQuery,
+  useSingleUserByEmailQuery
 } = authApi;
 export default authApi;
