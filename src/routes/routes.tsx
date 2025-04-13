@@ -3,11 +3,12 @@ import AdminProtectedRoute from "@/component/layout/AdminProtectedRoute";
 import Dashboard from "@/component/layout/Dashboard/Dashboard";
 import ProtectedRoute from "@/component/layout/ProtectedRoute";
 import About from "@/pages/About";
-import Checkout from "@/pages/Checkout";
+import Checkouts from "@/pages/Checkouts";
 import Home from "@/pages/Home";
 import Login from "@/pages/Login";
 import ProductDetails from "@/pages/ProductDetails";
 import Products from "@/pages/Products";
+import OrderVerify from "@/pages/OrderVerify";
 import SignUp from "@/pages/SignUp";
 import CreateProduct from "@/pages/admin/CreateProduct";
 import OrderManagement from "@/pages/admin/OrderManagement";
@@ -40,8 +41,12 @@ const router = createBrowserRouter([
         element: <ProductDetails />,
       },
       {
-        path: "/checkout",
-        element: <Checkout />,
+        path: "/checkouts",
+        element: <ProtectedRoute><Checkouts /></ProtectedRoute>,
+      },
+      {
+        path: "/orderVerify",
+        element: <ProtectedRoute><OrderVerify/></ProtectedRoute>,
       },
       {
         path: "/login",

@@ -45,6 +45,8 @@ const Products = () => {
   const [maxPriceRange, setMaxPriceRange] = useState(0);
   const [minPriceRange, setMinPriceRange] = useState(0);
   const [availability, setAvailability] = useState("all");
+  const [currentPage, setCurrentPage] = useState(1);
+  const pageSize = 3;
   useEffect(() => {
     if (products.length > 0) {
       const prices = products.map((product: TProduct) => product.price);
@@ -75,8 +77,14 @@ const Products = () => {
     return <LoddingPage />; //<p className="text-center">Loading...</p>
   }
 
+  const paginatedProducts = filteredProducts.slice(
+    (currentPage - 1) * pageSize,
+    currentPage * pageSize
+  );
+
   return (
     <div className="">
+      {/* Query Section */}
       <div className="mb-9 md:w-[50%] mx-auto">
         <Input
           value={search}
@@ -136,6 +144,8 @@ const Products = () => {
           </Select>
         </div>
       </div>
+
+      {/* Product Section */}
       {filteredProducts.length === 0 && (
         <div className="flex flex-col">
           <p className="mx-auto my-6 md:text-lg">
@@ -161,7 +171,7 @@ const Products = () => {
         </div>
       )}
       <div className="md:ml-0 gap-6 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 justify-evenly items-center w-full">
-        {filteredProducts.map((product: TProduct) => (
+        {paginatedProducts.map((product: TProduct) => (
           <Card key={product._id} className="w-full">
             <CardHeader>
               <img className="h-[300px]" src={product.image} alt="book.image" />
@@ -184,6 +194,55 @@ const Products = () => {
             </CardFooter>
           </Card>
         ))}
+      </div>
+
+      {/* Pagination Section */}
+      <div className="flex justify-end my-10">
+        <div className="inline-flex items-center gap-2">
+          <Button
+            variant="outline"
+            size="sm"
+            onClick={() => setCurrentPage((prev) => Math.max(prev - 1, 1))}
+            disabled={currentPage === 1}
+          >
+            Previous
+          </Button>
+
+          {Array.from(
+            { length: Math.ceil(filteredProducts.length / pageSize) },
+            (_, index) => {
+              const pageNumber = index + 1;
+              return (
+                <Button
+                  key={pageNumber}
+                  variant={currentPage === pageNumber ? "default" : "outline"}
+                  size="sm"
+                  onClick={() => setCurrentPage(pageNumber)}
+                >
+                  {pageNumber}
+                </Button>
+              );
+            }
+          )}
+
+          <Button
+            variant="outline"
+            size="sm"
+            onClick={() =>
+              setCurrentPage((prev) =>
+                Math.min(
+                  prev + 1,
+                  Math.ceil(filteredProducts.length / pageSize)
+                )
+              )
+            }
+            disabled={
+              currentPage === Math.ceil(filteredProducts.length / pageSize)
+            }
+          >
+            Next
+          </Button>
+        </div>
       </div>
     </div>
   );

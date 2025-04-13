@@ -2,7 +2,7 @@ import { Link, NavLink, useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Sheet, SheetTrigger, SheetContent } from "@/components/ui/sheet";
 import { Menu } from "lucide-react";
-import Logo from "@/assets/images/B__1_-removebg-preview.png"; // Import your logo
+import Logo from "@/assets/images/B__1_-removebg-preview.png"; 
 import { useSelector } from "react-redux";
 import { useAppDispatch } from "@/redux/features/hooks";
 import { logout, useCurrentUser } from "@/redux/features/auth/authSlice";
@@ -10,7 +10,6 @@ import { toast } from "sonner";
 
 export default function Navbar() {
   const user = useSelector(useCurrentUser);
-  console.log(user);
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
   const handleLogout = () => {
