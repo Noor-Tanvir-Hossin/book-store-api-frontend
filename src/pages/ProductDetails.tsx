@@ -3,11 +3,14 @@ import { MoveRight } from "lucide-react";
 import { useNavigate, useParams } from "react-router-dom";
 import LoddingPage from "./LoddingPage";
 import { useGetProductQuery } from "@/redux/features/ProductsApi/ProductsApi";
+import { addToCart } from "@/redux/features/cart/cartSlice";
+import { useDispatch } from "react-redux";
 
 const ProductDetails = () => {
   const { id } = useParams();
   const { data, isLoading } = useGetProductQuery(id);
   const navigate = useNavigate();
+  const dispatch = useDispatch();
 
   if (isLoading) {
     return <LoddingPage />;
@@ -15,7 +18,19 @@ const ProductDetails = () => {
   const product = data?.data || {};
 
   const handleBuyNow = () => {
-    navigate("/checkout");
+    dispatch(
+      addToCart({
+        _id: product._id,
+        title: product.title,
+        author: product.author,
+        description: product.description,
+        price: product.price,
+        image: product.image,
+        quantity: 1,
+        category: product.category,
+      })
+    );
+    navigate("/checkouts");
   };
 
   return (

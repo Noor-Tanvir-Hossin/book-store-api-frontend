@@ -10,7 +10,6 @@ import { toast } from "sonner";
 
 export default function Navbar() {
   const user = useSelector(useCurrentUser);
-  console.log(user);
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
   const handleLogout = () => {
