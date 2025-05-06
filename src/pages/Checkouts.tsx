@@ -188,7 +188,7 @@ const CheckoutPage: React.FC = () => {
                     </div>
                   ))}
                   <div className="text-right font-semibold text-lg">
-                    Total: ${totalPrice.toFixed(2)}
+                    Total: ${totalPrice?.toFixed(2)}
                   </div>
                 </div>
               ) : (

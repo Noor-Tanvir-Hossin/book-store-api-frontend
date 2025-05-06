@@ -10,7 +10,7 @@ import { RootState } from "../features/store";
 import { logout, setUser } from "../features/auth/authSlice";
 
 const baseQuery = fetchBaseQuery({
-  baseUrl: "bookbridge-backend-node.vercel.app/api",
+  baseUrl: "https://bookbridge-backend-node.vercel.app/api",
   credentials: "include",
   prepareHeaders: (headers, { getState }) => {
     const token = (getState() as RootState).auth.token;
@@ -34,7 +34,7 @@ const baseQueryWithRefreshToken: BaseQueryFn<
     //* Send Refresh
     console.log("Sending refresh token");
 
-    const res = await fetch("http://localhost:5000/api/auth/refresh-token", {
+    const res = await fetch("https://bookbridge-backend-node.vercel.app/api/auth/refresh-token", {
       method: "POST",
       credentials: "include",
     });

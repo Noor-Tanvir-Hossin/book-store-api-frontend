@@ -51,6 +51,7 @@ const OrderVerificationPage = () => {
   }
 
   const orderData = order_Data?.data;
+  console.log(orderData)
 
   return (
     <div className="max-w-screen-xl mx-auto my-20 px-4">
@@ -58,7 +59,7 @@ const OrderVerificationPage = () => {
         <h2 className="text-2xl font-semibold mb-6">Order Details</h2>
         <div className="space-y-4">
           <InfoRow label="Order ID" value={orderData?._id} />
-          <InfoRow label="Email" value={orderData?.email} />
+          <InfoRow label="Email" value={orderData?.user?.email} />
           <InfoRow
             label="Status"
             value={<Badge variant="outline">{orderData?.status}</Badge>}

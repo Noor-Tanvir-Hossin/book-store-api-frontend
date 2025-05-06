@@ -50,8 +50,8 @@ const FeaturedProducts = () => {
         everyone’s talking about!
       </p>
 
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
-        {data.data.slice(0, 6).map((product: TProduct) => (
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+        {data.data.slice(0, 8).map((product: TProduct) => (
           <Card key={product._id} className="w-full">
             <CardHeader>
               <img className="h-[250px]" src={product.image} alt="book.image" />

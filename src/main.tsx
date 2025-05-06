@@ -16,7 +16,13 @@ createRoot(document.getElementById('root')!).render(
    <PersistGate loading={null} persistor={persistor}>
     <RouterProvider router={router}/>
     </PersistGate>
-    <Toaster position='top-center'/>
+    <Toaster position='top-center' toastOptions={{
+    style: {
+      color: '#FD6E0A',
+      // color: '#FFFFFF',
+      // backgroundColor: '#FD6E0A', 
+    },
+  }}/>
    </Provider>
   </StrictMode>,
 )

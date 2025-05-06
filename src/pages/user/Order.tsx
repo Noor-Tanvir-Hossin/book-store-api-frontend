@@ -6,7 +6,7 @@ import {
   TableCell,
   TableHead,
   TableHeader,
-  TableRow
+  TableRow,
 } from "@/components/ui/table";
 // import { Badge } from "@/components/ui/badge";
 import { cn } from "@/lib/utils";
@@ -15,19 +15,20 @@ import { useGetOrdersByEmailQuery } from "@/redux/features/order/OrderApi";
 import TableLoading from "../TableLoading";
 import { TOrder } from "@/types";
 
-type TProduct = {
-  _id: string;
-  product: {
-    title: string;
-  };
-  quantity: number;
-};
+// type TProduct = {
+//   _id: string;
+//   product: {
+//     title: string;
+//   };
+//   quantity: number;
+// };
 
 const Orders: React.FC = () => {
   const user = useSelector(useCurrentUser);
   const { data, isLoading } = useGetOrdersByEmailQuery(user?.email, {
     skip: !user?.email,
   });
+  // console.log(data?.data);
 
   const [currentPage, setCurrentPage] = useState(1);
   const pageSize = 5;
@@ -35,8 +36,13 @@ const Orders: React.FC = () => {
   if (isLoading) return <TableLoading />;
 
   const orders = data?.data || [];
+  console.log(orders);
   const totalPages = Math.ceil(orders.length / pageSize);
-  const currentData = orders.slice((currentPage - 1) * pageSize, currentPage * pageSize);
+  const currentData = orders.slice(
+    (currentPage - 1) * pageSize,
+    currentPage * pageSize
+  );
+  console.log(currentData);
 
   const getStatusColor = (status: string) => {
     if (status === "Paid") return "bg-green-100 text-green-700";
@@ -62,7 +68,7 @@ const Orders: React.FC = () => {
             <TableHead>Products Name</TableHead>
             <TableHead>Quantity</TableHead>
             <TableHead>Total Price</TableHead>
-            {/* <TableHead>Payment</TableHead> */}
+            <TableHead>Payment</TableHead>
             <TableHead>Status</TableHead>
             <TableHead>Order At</TableHead>
           </TableRow>
@@ -72,8 +78,8 @@ const Orders: React.FC = () => {
             <TableRow key={order._id}>
               <TableCell>{order.transaction?.id}</TableCell>
               <TableCell>
-                {order.products.map((p : TProduct) => (
-                  <div key={p._id}>{p.product?.title}</div>
+                {order.populatedProducts.map((p) => (
+                  <div key={p._id}>{p?.title}</div>
                 ))}
               </TableCell>
               <TableCell>
@@ -82,9 +88,14 @@ const Orders: React.FC = () => {
                 ))}
               </TableCell>
               <TableCell>${order.totalPrice.toFixed(2)}</TableCell>
-              {/* <TableCell>{order.transaction?.method}</TableCell> */}
+              <TableCell>{order.transaction?.method}</TableCell>
               <TableCell>
-                <span className={cn("text-sm px-2 py-1 rounded", getStatusColor(order.status))}>
+                <span
+                  className={cn(
+                    "text-sm px-2 py-1 rounded",
+                    getStatusColor(order.status)
+                  )}
+                >
                   {order.status}
                 </span>
               </TableCell>
